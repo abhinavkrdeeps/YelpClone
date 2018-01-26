@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+
+
+
+  
+  <% var url="https:\//maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="%>
+   <% var api="&key=AIzaSyBlYH5yWzVPQ5aCWxdTerd7OwOJrtoa6q4"%>
+ 
+
+    <% var count=0 %>
+     <% var ref %>
+     <% var b=0 %>
+     
+    <% if(data.status==="ZERO_RESULTS") { %>
+      
+           <h1>Sorry...No results found.... try with more specific location</h1>
+           
+           <a href="/" class="ui blue button">Go To Home Page</a>
+    
+    
+    <% }%>
+     
+     
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+   <% data.results.forEach(function(place){  %>
+   
+       <div class="col-md-3 col-sm-6">
+           
+           <div class="thumbnail">
+            
+            <% if(typeof place.photos !== 'undefined' && place.photos) { %>
+            
+                   <img src="<%= url+place["photos"][0].photo_reference+api %>" style="height:150px"></img>
+            
+              <% console.log("hello"); }   else { %>
+              
+                    <img src="https://farm5.staticflickr.com/4415/36517825182_4494f54d61.jpg"></img>
+              
+              
+               <% }%>
+               
+         
+           
+        
+           
+           <div class="caption">
+           
+           <h3> <%=place.name%></h3>
+           <% console.log(place.place_id) %>
+           </div>
+           
+           <a href="/restaurant/<%=place.place_id%>" class="btn btn-large btn-primary">Reviews</a>
+           
+           
+           </div>
+       </div>
+       
+   <% });%>
+   
+   </div>
+ 
+
+ 
+      
+
+
+    
+
+
+<% include ../partials/footer %>

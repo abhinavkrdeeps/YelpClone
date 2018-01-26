@@ -1,0 +1,109 @@
+<% include ../partials/header %>
+
+ <% var latitude=data.result.geometry.location.lat %>
+            
+<% var longitude=data.result.geometry.location.lng %>
+
+<!----//////////  getting photo of the place  ---------->
+          
+<% var url="https:\//maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="%>
+<% var api="&key=AIzaSyBlYH5yWzVPQ5aCWxdTerd7OwOJrtoa6q4"%>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+           
+            <div id="map">
+                
+            </div>
+             <div class="list-group lit">
+                 <% var x="open";%>
+                 
+                 <li class="list-group-item">Now: <%if(data.result.opening_hours.open_now){x="open";} else{ x="closed";}%><%=x%></li>
+                
+                 <p style="color:#26253a;"><strong>Weekly Infomartion</strong></p>
+                  
+                
+                <% data.result.opening_hours.weekday_text.forEach(function(text){ %>
+                <li class="list-group-item"><%=text%></li>
+      
+            <%  }) %>
+            </div>
+            
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                  <% if(typeof data.result.photos !== 'undefined' && data.result.photos) { %>
+                <img class="img-responsive" src="<%= url+data.result.photos[0].photo_reference+api %>"></img>
+                    <% console.log("hello"); }   else { %>
+              
+                    <img src="https://farm5.staticflickr.com/4415/36517825182_4494f54d61.jpg"></img>
+               <% }%>
+               
+               <div class="caption-full">
+                   
+                   
+                 <a><h3><%=data.result.name%></h3></a> 
+                  <h4><%= data.result.formatted_address%></h3>
+                  <h4><%= data.result.formatted_phone_number%></h3>
+                  <div class="ui heart rating" data-rating="1" data-max-rating="3"></div>
+                   
+               </div>
+
+            </div>
+            
+             <div class="well">
+                 <div class="text-right">
+                     <a class="btn btn-success">Leave A Review</a>
+                 </div>
+                  <hr>
+                   <% if(typeof data.result.reviews !== 'undefined' && data.result.reviews) { %>
+                   <%  data.result.reviews.forEach(function(review) { %>
+                     <div class="row">
+                         <div class="col-md-9">
+                             <i><span> <img src="<%=review.profile_photo_url%>" style="width:50px;,height:20px;"></span><strong><%=review.author_name%></strong></i>
+                              <p>
+                                  <%= review.text%>
+                              </p>
+                         </div>
+                     </div>
+                     
+                    <% }); }%>
+                    
+                 
+             </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+            
+
+<script>
+ var map;
+ function initMap()
+ {
+    map=new google.maps.Map(document.getElementById("map"),{
+       center:{lat: <%=latitude%> ,lng: <%=longitude%>},
+       zoom:8
+    });
+ }
+
+</script>
+
+
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlYH5yWzVPQ5aCWxdTerd7OwOJrtoa6q4&callback=initMap"
+async defer></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<% include ../partials/footer %>

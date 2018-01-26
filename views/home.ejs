@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/javascript/main.js"></script>
+    <style>
+    body{
+    margin: 0;
+    padding: 0;
+    }    
+    #box1{
+        height: 100vh;
+        width: 100%;
+        background-image: url("../img/i3.jpg");
+        background-size: cover;
+        display: table;
+        position: relative;
+        background-attachment: fixed;
+    }
+    #box2{
+        height: 100vh;
+        width: 100%;
+        background-image: url("../img/i2.jpg");
+        background-size: cover;
+        display: table;
+        background-attachment: fixed;
+    }
+    #box3{
+        height: 100vh;
+        width: 100%;
+        background-image: url("../img/i3.jpg");
+        background-size: cover;
+        display: table;
+        background-attachment: fixed;
+    }
+    h1{
+        font-family: arial black;
+        font-size: 30px;
+        color:white;
+        position: relative;
+        top:200px;
+        left:130px;
+        margin: 0 auto;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    a{
+        color: white;
+        font-size:20px;
+        margin-left:128px;
+        font-weight:bolder;
+    }
+    .opt{
+        position:relative;
+        margin:0 auto;
+        top:280px;
+        width:50%;
+        left:80px;
+    }
+    .option{
+        position:relative;
+        top:300px;
+        margin:0 auto;
+        margin-top:20px;
+        right:100px;
+        width:50%;
+    }
+    #input{
+        width:50%;
+        height:40px;
+        font-size:18px;
+        border-radius:2%;
+        overflow:hidden;
+    }
+    button{
+        background-color:red;
+        color:white;
+        height:40px;
+        font-weight:bolder;
+        position:relative;
+        right:10px;
+        border: 1px solid red;
+    }
+    button:hover{
+        background-color:green;
+        cursor:pointer;
+    }
+    a:hover{
+        color:red;
+    }
+    .header{
+        position:relative;
+        margin: 0 auto;
+    }
+   
+        
+    </style>
+    </head>
+    <body>
+        <div id="box1">
+            
+            <div class="header">
+                <h1>Search Restaurant ,bar and Hospitals in any Location....</h1>
+            </div>
+          <form class="ui action input opt" action="/"  method="POST">
+                  <input type="text" name="place" placeholder="enter location and choose type below..." id="input">
+                  <button class="positive ui button">Search</button>
+</form>
+ 
+         
+            
+           <div class="ui horizontal bulleted link list  option">
+                  <a class="item" href="/restaurant">
+                    Restaurant
+                  </a>
+                  <a class="item" href="/hospital">
+                    Hospitals
+                  </a>
+                  <a class="item" href="/bar">
+                    Bars
+                  </a>
+            </div>
+            
+        </div>
+        <div id="box2">
+        </div>
+        <div id="box3">
+        </div>
+        
+    </body>
+</html>
