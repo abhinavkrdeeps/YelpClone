@@ -16,21 +16,13 @@ var serveStatic = require('serve-static')
 
 app.use(serveStatic('YelpClone/'))
 
- app.use(express.static('public'));
+ app.use(express.static(__dirname + '/public'));
  
  app.use(bodyParser.urlencoded({extended:true}));
 
 // Routes
 
 app.get("/",function(req,res){
-    
-    if(navigator.geolocation){
-        console.log("supported");
-    }
-    else{
-        console.log("not");
-    }
-    
     res.render("home");
     
 });
